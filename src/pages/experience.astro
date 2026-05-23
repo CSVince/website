@@ -7,6 +7,9 @@ const jobs = [
     role: "Software Engineer",
     dates: "Feb 2025 – Present",
     location: "Sydney, Australia",
+    logo: "/atlassian.svg",
+    initials: "AT",
+    color: "#0052CC",
     bullets: [
       "Modernised and migrated legacy platform capabilities to next-generation systems, enabling large-scale app partner migrations",
       "Led end-to-end delivery of major cross-product platform features across multiple teams and systems",
@@ -14,21 +17,27 @@ const jobs = [
     ],
   },
   {
-    company: "UNSW Computer Science and Engineering",
+    company: "UNSW CSE",
     role: "Casual Academic",
     dates: "Sep 2024 – Dec 2024",
     location: "Sydney, Australia",
+    logo: "/unsw.svg",
+    initials: "UN",
+    color: "#FFB81C",
     bullets: [
       "Taught COMP6991 - Solving Modern Programming Problems with Rust (24T3)",
       "Taught COMP2511 - Object Oriented Design & Programming (24T3)",
-      "Inspiring the next generation of software engineers"
+      "Inspiring the next generation of software engineers",
     ],
   },
   {
     company: "Atlassian",
-    role: "Software Engineering Intern",
+    role: "SWE Intern",
     dates: "Nov 2023 – Feb 2024",
     location: "Sydney, Australia",
+    logo: "/atlassian.svg",
+    initials: "AT",
+    color: "#0052CC",
     bullets: [
       "Implemented networking capabilities on service with high traffic volumes of up to 2000000 requests per second.",
       "Integrated comprehensive, cloud-based application into existing codebases for performance monitoring & error tracking",
@@ -37,19 +46,25 @@ const jobs = [
   },
   {
     company: "Macquarie Group",
-    role: "Software Engineering Intern",
+    role: "SWE Intern",
     dates: "Jan 2023 – Sep 2023",
     location: "Sydney, Australia",
+    logo: "/macquarie-group.svg",
+    initials: "MQ",
+    color: "#002B5C",
     bullets: [
       "Utilised Prometheus, Grafana and Loki logs and metrics to cut computing and memory costs by $1200000",
-      "Implemented API endpoints and refactored large-scale Java backend to satisfy updated business requirements"
+      "Implemented API endpoints and refactored large-scale Java backend to satisfy updated business requirements",
     ],
   },
   {
     company: "Optus",
-    role: "Software Engineering Intern",
+    role: "SWE Intern",
     dates: "Jul 2022 – Dec 2022",
     location: "Sydney, Australia",
+    logo: "/optus.svg",
+    initials: "OP",
+    color: "#00A651",
     bullets: [
       "Migrated legacy pipelines and procedures by building a NodeJS backend and React frontend to increase workflow efficiency by over 200%",
       "Designed and developed tactical solution in a NodeJS backend, consumed up to 10000 times with 100% success rate",
@@ -62,6 +77,9 @@ const jobs = [
     role: "Senior Chemistry Tutor",
     dates: "Jan 2021 – Mar 2026",
     location: "Sydney, Australia",
+    logo: "/peak.png",
+    initials: "PH",
+    color: "#7C3AED",
     bullets: [
       "Teaching Year 12 Chemistry",
       "Inspiring the next generation of chemists",
@@ -74,17 +92,13 @@ const projects = [
     name: "Dungeon Mania",
     description: "Game built in Java supporting a bunch of cool features such as battle, time-travel, consumables, and persistence awarded a final mark of 100%",
     tech: ["Java"],
-    links: [
-      { label: "GitHub", href: "https://github.com/CSVince/Dungeonmania" },
-    ],
+    links: [{ label: "GitHub", href: "https://github.com/CSVince/Dungeonmania" }],
   },
   {
     name: "Microsoft Teams Clone",
     description: "Python web application with a functioning frontend and backend mimicking functionality of Microsoft Teams, receiving a final mark of 93.",
     tech: ["Python", "Flask"],
-    links: [
-      { label: "GitHub", href: "https://github.com/CSVince/MockTeams" },
-    ],
+    links: [{ label: "GitHub", href: "https://github.com/CSVince/MockTeams" }],
   },
 ];
 ---
@@ -94,30 +108,82 @@ const projects = [
   <!-- Header -->
   <section class="pb-8 border-b border-slate-100 dark:border-slate-800">
     <p class="text-blue-600 dark:text-blue-400 font-semibold text-sm tracking-widest uppercase mb-4">Experience</p>
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-slate-50 leading-tight mb-6">What have I been up to?</h1>
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-slate-50 leading-tight">What have I been up to?</h1>
   </section>
 
-  <section class="py-8 border-b border-slate-100 dark:border-slate-800">
-    <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-8">Work Experience</h2>
-    <div class="space-y-5">
-      {jobs.map((job) => (
-        <article class="p-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 hover:border-blue-200 dark:hover:border-blue-700 hover:bg-blue-50/30 dark:hover:bg-blue-900/10 transition-colors">
-          <div class="flex flex-wrap justify-between items-start gap-3 mb-4">
-            <div>
-              <h3 class="text-base font-bold text-slate-900 dark:text-slate-50">{job.role}</h3>
-              <p class="text-blue-600 dark:text-blue-400 font-semibold text-sm mt-0.5">{job.company}</p>
-            </div>
-            <div class="text-right">
-              <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">{job.dates}</p>
-              <p class="text-xs text-slate-400 dark:text-slate-500 mt-0.5">{job.location}</p>
-            </div>
-          </div>
-          <ul class="space-y-1.5 pl-4 border-l-2 border-slate-200 dark:border-slate-700">
-            {job.bullets.map((b) => (
-              <li class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{b}</li>
-            ))}
-          </ul>
-        </article>
+  <!-- Work Experience Carousel -->
+  <section class="py-10 border-b border-slate-100 dark:border-slate-800">
+    <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-6">Work Experience</h2>
+
+    <div class="relative">
+      <!-- Prev -->
+      <button
+        id="carousel-prev"
+        aria-label="Previous"
+        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-9 h-9 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-all"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
+
+      <!-- Viewport -->
+      <div id="carousel-viewport" class="overflow-hidden">
+        <div id="carousel-track" class="flex gap-4 will-change-transform">
+          {jobs.map((job, i) => (
+            <button
+              class="carousel-card shrink-0 w-44 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5 flex flex-col items-center text-center gap-3 hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-md transition-all cursor-pointer group"
+              data-index={String(i)}
+            >
+              <div class="w-16 h-16 rounded-xl overflow-hidden flex items-center justify-center shrink-0 shadow-sm bg-slate-100 dark:bg-slate-800">
+                {job.logo
+                  ? <img
+                      src={job.logo}
+                      alt={job.company}
+                      class="w-full h-full object-contain"
+                      onerror={`this.style.display='none';this.nextElementSibling.style.display='flex'`}
+                    />
+                  : null}
+                <div
+                  class="w-full h-full items-center justify-center text-white font-bold text-lg rounded-xl"
+                  style={`background:${job.color};display:${job.logo ? 'none' : 'flex'}`}
+                >
+                  {job.initials}
+                </div>
+              </div>
+              <div class="min-w-0 w-full">
+                <p class="font-bold text-slate-900 dark:text-slate-50 text-sm leading-snug truncate">{job.company}</p>
+                <p class="text-slate-500 dark:text-slate-400 text-xs mt-0.5 leading-snug truncate">{job.role}</p>
+                <p class="text-slate-400 dark:text-slate-500 text-xs mt-1">{job.dates}</p>
+              </div>
+              <span class="text-[11px] font-semibold text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                View details →
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Next -->
+      <button
+        id="carousel-next"
+        aria-label="Next"
+        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-9 h-9 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-all"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Dots -->
+    <div id="dots" class="flex gap-2 justify-center mt-6">
+      {jobs.map((_, i) => (
+        <button
+          class="dot h-2 rounded-full bg-slate-200 dark:bg-slate-700 transition-all duration-300"
+          data-index={String(i)}
+          aria-label={`Go to slide ${i + 1}`}
+        />
       ))}
     </div>
   </section>
@@ -132,12 +198,7 @@ const projects = [
             <h3 class="text-base font-bold text-slate-900 dark:text-slate-50">{proj.name}</h3>
             <div class="flex gap-3 shrink-0">
               {proj.links.map((l) => (
-                <a
-                  href={l.href}
-                  target="_blank"
-                  rel="noopener"
-                  class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-xs font-semibold whitespace-nowrap"
-                >
+                <a href={l.href} target="_blank" rel="noopener" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-xs font-semibold whitespace-nowrap">
                   {l.label} →
                 </a>
               ))}
@@ -157,3 +218,179 @@ const projects = [
   </section>
 
 </Layout>
+
+<!-- Modal -->
+<div
+  id="modal-backdrop"
+  class="fixed inset-0 z-50 flex items-center justify-center p-4"
+  style="display:none; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);"
+>
+  <div
+    id="modal-panel"
+    class="w-full max-w-lg rounded-2xl bg-white dark:bg-slate-900 shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden"
+    style="transform: translateY(16px); opacity: 0; transition: transform 0.2s ease, opacity 0.2s ease;"
+  >
+    <div class="flex items-start gap-4 p-6 border-b border-slate-100 dark:border-slate-800">
+      <div id="modal-logo-wrap" class="w-14 h-14 rounded-xl overflow-hidden shrink-0 shadow-sm flex items-center justify-center bg-slate-100 dark:bg-slate-800"></div>
+      <div class="flex-1 min-w-0">
+        <h3 id="modal-role" class="text-lg font-bold text-slate-900 dark:text-slate-50"></h3>
+        <p id="modal-company" class="text-blue-600 dark:text-blue-400 font-semibold text-sm mt-0.5"></p>
+        <p id="modal-meta" class="text-slate-400 dark:text-slate-500 text-xs mt-1"></p>
+      </div>
+      <button id="modal-close" aria-label="Close" class="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <ul id="modal-bullets" class="p-6 space-y-3 max-h-72 overflow-y-auto"></ul>
+  </div>
+</div>
+
+<style>
+  .dot.active {
+    background: #3b82f6;
+    width: 1.5rem;
+  }
+  .dot {
+    width: 0.5rem;
+  }
+</style>
+
+<script define:vars={{ jobs }}>
+  const COUNT = jobs.length;
+  const CARD_W = 176;   // w-44
+  const GAP    = 16;    // gap-4
+  const STRIDE = CARD_W + GAP;
+
+  const viewport  = document.getElementById('carousel-viewport');
+  const track     = document.getElementById('carousel-track');
+  const prevBtn   = document.getElementById('carousel-prev');
+  const nextBtn   = document.getElementById('carousel-next');
+  const dotBtns   = [...document.querySelectorAll('.dot')];
+  const backdrop  = document.getElementById('modal-backdrop');
+  const panel     = document.getElementById('modal-panel');
+  const closeBtn  = document.getElementById('modal-close');
+
+  // --- Infinite clone setup ---
+  // Clone all cards and prepend + append so we can cycle seamlessly
+  const originals = [...track.querySelectorAll('.carousel-card')];
+  const before = originals.map(c => c.cloneNode(true));
+  const after  = originals.map(c => c.cloneNode(true));
+  before.forEach(c => track.prepend(c));   // inserts in reverse → fix order
+  // prepend inserts before the first child each time, reversing order; insert in reverse to get correct order
+  // Actually let's do it right:
+  track.innerHTML = '';
+  [...before, ...originals, ...after].forEach(c => track.appendChild(c));
+
+  // Real cards live at indices COUNT … 2*COUNT-1
+  let current = COUNT; // index 0 = first real card (Atlassian SWE)
+
+  function offsetFor(index) {
+    const viewW = viewport.offsetWidth;
+    return (viewW / 2) - (CARD_W / 2) - index * STRIDE;
+  }
+
+  function moveTo(index, animated) {
+    track.style.transition = animated
+      ? 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)'
+      : 'none';
+    track.style.transform = `translateX(${offsetFor(index)}px)`;
+    current = index;
+
+    // Update dots using real (modulo) index
+    const realIdx = ((index - COUNT) % COUNT + COUNT) % COUNT;
+    dotBtns.forEach((d, i) => d.classList.toggle('active', i === realIdx));
+  }
+
+  // After each animated transition, silently jump if we're in clone territory
+  track.addEventListener('transitionend', () => {
+    if (current < COUNT) {
+      moveTo(current + COUNT, false);
+    } else if (current >= COUNT * 2) {
+      moveTo(current - COUNT, false);
+    }
+  });
+
+  // Initial position (no animation)
+  moveTo(COUNT, false);
+
+  // Recalculate on resize
+  window.addEventListener('resize', () => moveTo(current, false));
+
+  // --- Navigation ---
+  prevBtn.addEventListener('click', () => moveTo(current - 1, true));
+  nextBtn.addEventListener('click', () => moveTo(current + 1, true));
+
+  dotBtns.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      // Determine closest real slot for this dot (prefer staying near current)
+      const realSlot = COUNT + i;
+      moveTo(realSlot, true);
+    });
+  });
+
+  // --- Card click → modal (event delegation covers clones too) ---
+  track.addEventListener('click', (e) => {
+    const card = e.target.closest('.carousel-card');
+    if (!card) return;
+    const i = parseInt(card.dataset.index);
+    if (!isNaN(i)) openModal(jobs[i]);
+  });
+
+  // --- Modal ---
+  function makeFallback(job) {
+    const div = document.createElement('div');
+    div.style.background = job.color;
+    div.className = 'w-full h-full flex items-center justify-center text-white font-bold text-lg';
+    div.textContent = job.initials;
+    return div;
+  }
+
+  function openModal(job) {
+    const logoWrap = document.getElementById('modal-logo-wrap');
+    logoWrap.innerHTML = '';
+    if (job.logo) {
+      const img = document.createElement('img');
+      img.src = job.logo;
+      img.alt = job.company;
+      img.className = 'w-full h-full object-contain';
+      img.onerror = () => { img.remove(); logoWrap.appendChild(makeFallback(job)); };
+      logoWrap.appendChild(img);
+    } else {
+      logoWrap.appendChild(makeFallback(job));
+    }
+
+    document.getElementById('modal-role').textContent = job.role;
+    document.getElementById('modal-company').textContent = job.company;
+    document.getElementById('modal-meta').textContent = `${job.dates} · ${job.location}`;
+
+    const list = document.getElementById('modal-bullets');
+    list.innerHTML = '';
+    job.bullets.forEach(b => {
+      const li = document.createElement('li');
+      li.className = 'flex gap-3 text-slate-600 dark:text-slate-300 text-sm leading-relaxed';
+      const dot = document.createElement('span');
+      dot.className = 'mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0';
+      li.append(dot);
+      li.append(document.createTextNode(b));
+      list.appendChild(li);
+    });
+
+    backdrop.style.display = 'flex';
+    requestAnimationFrame(() => {
+      panel.style.transform = 'translateY(0)';
+      panel.style.opacity = '1';
+    });
+  }
+
+  function closeModal() {
+    panel.style.transform = 'translateY(16px)';
+    panel.style.opacity = '0';
+    setTimeout(() => { backdrop.style.display = 'none'; }, 200);
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', e => { if (e.target === backdrop) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
