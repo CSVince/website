@@ -3,45 +3,87 @@ import Layout from '../layouts/Layout.astro';
 
 const jobs = [
   {
-    company: "Company Name",
-    role: "Software Engineer Intern",
-    dates: "Jun 2024 – Aug 2024",
-    location: "City, State",
+    company: "Atlassian",
+    role: "Software Engineer",
+    dates: "Feb 2025 – Present",
+    location: "Sydney, Australia",
     bullets: [
-      "Built and shipped [feature] that improved [metric] by X%",
-      "Collaborated with a team of N engineers to [accomplish goal]",
-      "Wrote tests and documentation for [system/module]",
+      "Modernised and migrated legacy platform capabilities to next-generation systems, enabling large-scale app partner migrations",
+      "Led end-to-end delivery of major cross-product platform features across multiple teams and systems",
+      "Built customer-facing tooling to support seamless upgrades across hundreds of thousands of global app installations",
     ],
   },
   {
-    company: "Another Company",
-    role: "Software Developer",
-    dates: "Jan 2023 – May 2023",
-    location: "Remote",
+    company: "UNSW Computer Science and Engineering",
+    role: "Casual Academic",
+    dates: "Sep 2024 – Dec 2024",
+    location: "Sydney, Australia",
     bullets: [
-      "Developed [feature/tool] using [tech stack]",
-      "Reduced [problem] by implementing [solution]",
-      "Mentored junior developers and conducted code reviews",
+      "Taught COMP6991 - Solving Modern Programming Problems with Rust (24T3)",
+      "Taught COMP2511 - Object Oriented Design & Programming (24T3)",
+      "Inspiring the next generation of software engineers"
+    ],
+  },
+  {
+    company: "Atlassian",
+    role: "Software Engineering Intern",
+    dates: "Nov 2023 – Feb 2024",
+    location: "Sydney, Australia",
+    bullets: [
+      "Implemented networking capabilities on service with high traffic volumes of up to 2000000 requests per second.",
+      "Integrated comprehensive, cloud-based application into existing codebases for performance monitoring & error tracking",
+      "Rectified a critical bug in company-wide software, significantly enhancing system reliability and optimizing overall performance",
+    ],
+  },
+  {
+    company: "Macquarie Group",
+    role: "Software Engineering Intern",
+    dates: "Jan 2023 – Sep 2023",
+    location: "Sydney, Australia",
+    bullets: [
+      "Utilised Prometheus, Grafana and Loki logs and metrics to cut computing and memory costs by $1200000",
+      "Implemented API endpoints and refactored large-scale Java backend to satisfy updated business requirements"
+    ],
+  },
+  {
+    company: "Optus",
+    role: "Software Engineering Intern",
+    dates: "Jul 2022 – Dec 2022",
+    location: "Sydney, Australia",
+    bullets: [
+      "Migrated legacy pipelines and procedures by building a NodeJS backend and React frontend to increase workflow efficiency by over 200%",
+      "Designed and developed tactical solution in a NodeJS backend, consumed up to 10000 times with 100% success rate",
+      "Scripted pipelines to automatically build and deploy project Docker images, reducing deployment times by over 100%",
+      "Confirmed not the cause of the 2022 data breach despite deploying to prod the Friday before",
+    ],
+  },
+  {
+    company: "Peak HSC",
+    role: "Senior Chemistry Tutor",
+    dates: "Jan 2021 – Mar 2026",
+    location: "Sydney, Australia",
+    bullets: [
+      "Teaching Year 12 Chemistry",
+      "Inspiring the next generation of chemists",
     ],
   },
 ];
 
 const projects = [
   {
-    name: "Project Name",
-    description: "A brief description of what this project does and why you built it.",
-    tech: ["React", "Node.js", "PostgreSQL"],
+    name: "Dungeon Mania",
+    description: "Game built in Java supporting a bunch of cool features such as battle, time-travel, consumables, and persistence awarded a final mark of 100%",
+    tech: ["Java"],
     links: [
-      { label: "GitHub", href: "https://github.com/" },
-      { label: "Live Demo", href: "#" },
+      { label: "GitHub", href: "https://github.com/CSVince/Dungeonmania" },
     ],
   },
   {
-    name: "Another Project",
-    description: "What problem does this solve? What did you learn building it?",
-    tech: ["Python", "FastAPI", "Docker"],
+    name: "Microsoft Teams Clone",
+    description: "Python web application with a functioning frontend and backend mimicking functionality of Microsoft Teams, receiving a final mark of 93.",
+    tech: ["Python", "Flask"],
     links: [
-      { label: "GitHub", href: "https://github.com/" },
+      { label: "GitHub", href: "https://github.com/CSVince/MockTeams" },
     ],
   },
 ];
@@ -50,16 +92,12 @@ const projects = [
 <Layout title="Experience" description="Vincent Nguyen's professional experience and projects">
 
   <!-- Header -->
-  <section class="pb-14 border-b border-slate-100">
-    <p class="text-blue-600 font-semibold text-sm tracking-widest uppercase mb-4">What I've Done</p>
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight mb-6">Experience</h1>
-    <p class="text-lg text-slate-500 max-w-xl leading-relaxed">
-      A summary of my professional experience and projects I've worked on.
-    </p>
+  <section class="pb-8 border-b border-slate-100">
+    <p class="text-blue-600 font-semibold text-sm tracking-widest uppercase mb-4">Experience</p>
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight mb-6">What have I been up to?</h1>
   </section>
 
-  <!-- Work Experience -->
-  <section class="py-14 border-b border-slate-100">
+  <section class="py-8 border-b border-slate-100">
     <h2 class="text-xl font-bold text-slate-900 mb-8">Work Experience</h2>
     <div class="space-y-5">
       {jobs.map((job) => (

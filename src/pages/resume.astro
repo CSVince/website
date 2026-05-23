@@ -1,33 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Place your resume PDF at: public/resume.pdf
-const resumePath = "/resume.pdf";
+const resumePath = "/super-qualified-resume.pdf";
 ---
 
 <Layout title="Resume" description="Vincent Nguyen's Resume">
 
-  <section class="pb-10 border-b border-slate-100">
+  <section class="pb-8 border-b border-slate-100">
     <p class="text-blue-600 font-semibold text-sm tracking-widest uppercase mb-4">Resume</p>
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight mb-2">Vincent Nguyen</h1>
-    <p class="text-lg text-blue-600 font-semibold mb-8">Likely outdated. Let's hope I won't need it any time soon 🤞</p>
-    <div class="flex flex-wrap gap-3">
-      <a
-        href={resumePath}
-        download="VincentNguyen_Resume.pdf"
-        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 transition-colors shadow-sm"
-      >
-        ↓ Download PDF
-      </a>
-      <a
-        href={resumePath}
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-200 text-slate-700 font-semibold text-sm hover:border-blue-600 hover:text-blue-600 transition-colors"
-      >
-        Open in new tab ↗
-      </a>
-    </div>
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight mb-2">Outdated (slightly).</h1>
   </section>
 
   <div class="mt-10 relative rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 min-h-[700px]">
