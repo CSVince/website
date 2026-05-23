@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 
 const skills = {
-  "Languages": ["Python", "JavaScript", "TypeScript", "Java", "C++"],
+  "Languages": ["Java", "TypeScript", "JavaScript", "Golang", "Python"],
   "Frameworks": ["React", "Node.js", "Astro", "FastAPI"],
   "Tools": ["Git", "Docker", "PostgreSQL", "Linux"],
 };
@@ -11,61 +11,67 @@ const skills = {
 <Layout title="About" description="About Vincent Nguyen — Software Engineer">
 
   <!-- Header -->
-  <section class="pb-14 border-b border-slate-100">
+  <section class="pb-7 border-b border-slate-100">
     <p class="text-blue-600 font-semibold text-sm tracking-widest uppercase mb-4">About Me</p>
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
-      Hi, I'm Vincent
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900">
+      Hey again, I'm Vince 👋
     </h1>
-    <p class="text-lg text-slate-500 max-w-2xl leading-relaxed">
-      I'm a software engineer with a passion for building clean, reliable software.
-      I enjoy working across the stack and am always looking for ways to improve my craft.
-    </p>
   </section>
 
-  <!-- Bio + Skills -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-16 py-14 border-b border-slate-100">
-
+  <div class="grid grid-cols-1 md:grid-cols-1 gap-16 py-8 border-b border-slate-100">
     <section>
-      <h2 class="text-xl font-bold text-slate-900 mb-5">Background</h2>
+      <h2 class="text-xl font-bold text-slate-900 mb-5">Why software engineering?</h2>
       <div class="space-y-4 text-slate-500 leading-relaxed">
         <p>
-          <!-- Replace with your story -->
-          I've been writing code since [year] and am currently studying computer science.
-          I'm drawn to problems that sit at the intersection of engineering and real-world impact.
+          Coding since 2021. Problem-solving since 2008. Cold since 2003. 🥶
         </p>
         <p>
-          When I'm not at my desk, you'll find me [hobbies — e.g., hiking, reading, playing chess].
-          I believe in writing code that others can read and software that people actually want to use.
+          I’d be lying if I said I always knew I wanted to be a software engineer. Honestly, software engineering wasn’t even on my radar until the week before I had to lock in my degree.
+        </p>
+        <p>
+          Whether it was Mathematics and Chemistry in high school, Data Structures and Algorithms at UNSW, or shipping real features at Atlassian, the feeling has always been the same — going to bed completely stuck, then waking up with a path forward. Ignore the hours of tossing and turning in between.
+        </p>
+        <p>
+          So software engineering? More of a means than an end. And the end isn’t early retirement — those dreams might be cooked anyway. The end is simpler than that: a career that still feels rewarding on Monday morning. Most Mondays at least.
+        </p>
+        <p>
+          The latest challenge? AI.
+        </p>
+        <p>
+        And honestly, I love it.
+        </p>
+        <p>
+          I feel lucky to have entered the industry right as AI started reshaping it. Even then, it somehow still feels impossible to keep up. Every week there’s a new tool, a new optimisation, a new breakthrough — and at this point I’ve genuinely lost count.
+        </p>
+        <p>
+          Half the time I’m excited. The other half I’m wondering whether the next grad is about to put me out of a job.
+        </p>
+        <p>
+          So consider this little website proof that the cycle continues: learning, building, problem-solving, improving. That’s always been the part I enjoy most anyway 😊
         </p>
       </div>
     </section>
 
     <section>
-      <h2 class="text-xl font-bold text-slate-900 mb-5">Skills</h2>
-      <div class="space-y-5">
-        {Object.entries(skills).map(([category, items]) => (
-          <div>
-            <p class="text-xs font-semibold tracking-widest uppercase text-slate-400 mb-2">{category}</p>
-            <div class="flex flex-wrap gap-2">
-              {items.map((skill) => (
-                <span class="px-3 py-1 rounded-full border border-slate-200 text-slate-600 text-sm font-medium bg-slate-50">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
+      <h2 class="text-xl font-bold text-slate-900 mb-5">What else besides software engineering?</h2>
+      <div class="space-y-4 text-slate-500 leading-relaxed">
+        <p>
+          When I'm not delivering shareholder value, you'll find me
+          <ul class="list-disc list-inside">
+            <li>kickboxing and gymming (I look like I've not stepped 50 metres within a gym in my life)</li>
+            <li>rewatching how i met your mother (the children yearn for the yearn)</li> 
+            <li>at my local Oporto (single-handedly funding expansion plans)</li>
+          </ul>
+        </p>
       </div>
     </section>
+
 
   </div>
 
   <!-- Contact -->
   <section class="pt-14">
     <h2 class="text-xl font-bold text-slate-900 mb-2">Get in Touch</h2>
-    <p class="text-slate-500 mb-6">
-      I'm always open to interesting conversations, opportunities, or just saying hello.
-    </p>
     <div class="flex items-center gap-5">
 
       <a href="https://github.com/CSVince" target="_blank" rel="noopener" aria-label="GitHub" class="text-slate-400 hover:text-slate-900 transition-colors">
