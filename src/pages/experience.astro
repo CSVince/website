@@ -75,7 +75,7 @@ const jobs = [
   {
     company: "Peak HSC",
     role: "Senior Chemistry Tutor",
-    dates: "Jan 2021 – Mar 2026",
+    dates: "Jan 2021 – Present",
     location: "Sydney, Australia",
     logo: "/peak.png",
     initials: "PH",
@@ -128,7 +128,7 @@ const projects = [
       </button>
 
       <!-- Viewport -->
-      <div id="carousel-viewport" class="overflow-hidden">
+      <div id="carousel-viewport" class="overflow-hidden py-5">
         <div id="carousel-track" class="flex gap-4 will-change-transform">
           {jobs.map((job, i) => (
             <button
@@ -255,6 +255,26 @@ const projects = [
   .dot {
     width: 0.5rem;
   }
+  .carousel-card {
+    transition:
+      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.35s ease,
+      border-color 0.15s ease,
+      opacity 0.35s ease;
+  }
+  .carousel-card.centered {
+    transform: translateY(-8px) scale(1.06);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    border-color: #3b82f6;
+    opacity: 1 !important;
+  }
+  :global(.dark) .carousel-card.centered {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    border-color: #60a5fa;
+  }
+  .carousel-card:not(.centered) {
+    opacity: 0.6;
+  }
 </style>
 
 <script define:vars={{ jobs }}>
@@ -292,19 +312,28 @@ const projects = [
   }
 
   function moveTo(index, animated) {
-    track.style.transition = animated
-      ? 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)'
-      : 'none';
+    if (!animated) {
+      track.style.transition = 'none';
+      track.getBoundingClientRect(); // force reflow so transition:none takes effect immediately
+    } else {
+      track.style.transition = 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
+    }
     track.style.transform = `translateX(${offsetFor(index)}px)`;
     current = index;
 
-    // Update dots using real (modulo) index
+    // Update dots and centered card using real (modulo) index
     const realIdx = ((index - COUNT) % COUNT + COUNT) % COUNT;
     dotBtns.forEach((d, i) => d.classList.toggle('active', i === realIdx));
+
+    // Mark all instances of the centered card (real + clones share data-index)
+    track.querySelectorAll('.carousel-card').forEach(c => c.classList.remove('centered'));
+    track.querySelectorAll(`.carousel-card[data-index="${realIdx}"]`).forEach(c => c.classList.add('centered'));
   }
 
-  // After each animated transition, silently jump if we're in clone territory
-  track.addEventListener('transitionend', () => {
+  // After the track's own transform transition ends, silently jump if in clone territory.
+  // Filter on e.target === track so bubbled card transitions (scale/opacity) don't trigger this.
+  track.addEventListener('transitionend', (e) => {
+    if (e.target !== track || e.propertyName !== 'transform') return;
     if (current < COUNT) {
       moveTo(current + COUNT, false);
     } else if (current >= COUNT * 2) {
@@ -330,12 +359,23 @@ const projects = [
     });
   });
 
-  // --- Card click → modal (event delegation covers clones too) ---
+  // --- Card click → center it, or open modal if already centered ---
   track.addEventListener('click', (e) => {
     const card = e.target.closest('.carousel-card');
     if (!card) return;
     const i = parseInt(card.dataset.index);
-    if (!isNaN(i)) openModal(jobs[i]);
+    if (isNaN(i)) return;
+
+    if (card.classList.contains('centered')) {
+      openModal(jobs[i]);
+    } else {
+      // Pick the slot (clone-before, real, or clone-after) closest to current position
+      const slots = [i, i + COUNT, i + COUNT * 2];
+      const closest = slots.reduce((best, slot) =>
+        Math.abs(slot - current) < Math.abs(best - current) ? slot : best
+      );
+      moveTo(closest, true);
+    }
   });
 
   // --- Modal ---
