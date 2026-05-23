@@ -6,16 +6,15 @@ const resumePath = "/super-qualified-resume.pdf";
 
 <Layout title="Resume" description="Vincent Nguyen's Resume">
 
-  <section class="pb-8 border-b border-slate-100">
-    <p class="text-blue-600 font-semibold text-sm tracking-widest uppercase mb-4">Resume</p>
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight mb-2">Outdated (slightly).</h1>
+  <section class="pb-8 border-b border-slate-100 dark:border-slate-800">
+    <p class="text-blue-600 dark:text-blue-400 font-semibold text-sm tracking-widest uppercase mb-4">Resume</p>
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-slate-50 leading-tight mb-2">Outdated (slightly).</h1>
   </section>
 
-  <div class="mt-10 relative rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 min-h-[700px]">
-    <!-- Shown until PDF loads -->
+  <div class="mt-10 relative rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden bg-slate-50 dark:bg-slate-900 min-h-[700px]">
     <div id="pdf-placeholder" class="absolute inset-0 flex flex-col items-center justify-center text-center p-8 pointer-events-none">
-      <div class="w-14 h-14 rounded-xl bg-slate-200 flex items-center justify-center mb-4 text-2xl">📄</div>
-      <p class="text-slate-500 text-sm max-w-sm leading-relaxed">
+      <div class="w-14 h-14 rounded-xl bg-slate-200 dark:bg-slate-700 flex items-center justify-center mb-4 text-2xl">📄</div>
+      <p class="text-slate-500 dark:text-slate-400 text-sm max-w-sm leading-relaxed">
         Loading...
       </p>
     </div>
