@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const jobs = [
+  {
+    company: "Company Name",
+    role: "Software Engineer Intern",
+    dates: "Jun 2024 – Aug 2024",
+    location: "City, State",
+    bullets: [
+      "Built and shipped [feature] that improved [metric] by X%",
+      "Collaborated with a team of N engineers to [accomplish goal]",
+      "Wrote tests and documentation for [system/module]",
+    ],
+  },
+  {
+    company: "Another Company",
+    role: "Software Developer",
+    dates: "Jan 2023 – May 2023",
+    location: "Remote",
+    bullets: [
+      "Developed [feature/tool] using [tech stack]",
+      "Reduced [problem] by implementing [solution]",
+      "Mentored junior developers and conducted code reviews",
+    ],
+  },
+];
+
+const projects = [
+  {
+    name: "Project Name",
+    description: "A brief description of what this project does and why you built it.",
+    tech: ["React", "Node.js", "PostgreSQL"],
+    links: [
+      { label: "GitHub", href: "https://github.com/" },
+      { label: "Live Demo", href: "#" },
+    ],
+  },
+  {
+    name: "Another Project",
+    description: "What problem does this solve? What did you learn building it?",
+    tech: ["Python", "FastAPI", "Docker"],
+    links: [
+      { label: "GitHub", href: "https://github.com/" },
+    ],
+  },
+];
+---
+
+<Layout title="Experience" description="Vincent Nguyen's professional experience and projects">
+
+  <!-- Header -->
+  <section class="pb-14 border-b border-slate-100">
+    <p class="text-blue-600 font-semibold text-sm tracking-widest uppercase mb-4">What I've Done</p>
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight mb-6">Experience</h1>
+    <p class="text-lg text-slate-500 max-w-xl leading-relaxed">
+      A summary of my professional experience and projects I've worked on.
+    </p>
+  </section>
+
+  <!-- Work Experience -->
+  <section class="py-14 border-b border-slate-100">
+    <h2 class="text-xl font-bold text-slate-900 mb-8">Work Experience</h2>
+    <div class="space-y-5">
+      {jobs.map((job) => (
+        <article class="p-6 rounded-xl border border-slate-200 bg-slate-50 hover:border-blue-200 hover:bg-blue-50/30 transition-colors">
+          <div class="flex flex-wrap justify-between items-start gap-3 mb-4">
+            <div>
+              <h3 class="text-base font-bold text-slate-900">{job.role}</h3>
+              <p class="text-blue-600 font-semibold text-sm mt-0.5">{job.company}</p>
+            </div>
+            <div class="text-right">
+              <p class="text-sm text-slate-500 font-medium">{job.dates}</p>
+              <p class="text-xs text-slate-400 mt-0.5">{job.location}</p>
+            </div>
+          </div>
+          <ul class="space-y-1.5 pl-4 border-l-2 border-slate-200">
+            {job.bullets.map((b) => (
+              <li class="text-slate-500 text-sm leading-relaxed">{b}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="pt-14">
+    <h2 class="text-xl font-bold text-slate-900 mb-8">Projects</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      {projects.map((proj) => (
+        <article class="p-6 rounded-xl border border-slate-200 bg-slate-50 hover:border-blue-200 hover:shadow-sm transition-all flex flex-col">
+          <div class="flex justify-between items-start gap-2 mb-3">
+            <h3 class="text-base font-bold text-slate-900">{proj.name}</h3>
+            <div class="flex gap-3 shrink-0">
+              {proj.links.map((l) => (
+                <a
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener"
+                  class="text-blue-600 hover:text-blue-800 text-xs font-semibold whitespace-nowrap"
+                >
+                  {l.label} →
+                </a>
+              ))}
+            </div>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-1">{proj.description}</p>
+          <div class="flex flex-wrap gap-1.5">
+            {proj.tech.map((t) => (
+              <span class="px-2.5 py-0.5 rounded-full border border-slate-200 text-slate-500 text-xs font-medium bg-white">
+                {t}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+</Layout>

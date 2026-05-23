@@ -1,23 +1,69 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/global.css';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = "Vincent Nguyen", description = "Vincent Nguyen — Software Engineer" } = Astro.props;
+const pageTitle = title === "Vincent Nguyen" ? title : `${title} — Vincent Nguyen`;
+
+const navLinks = [
+  { href: '/about', label: 'About' },
+  { href: '/experience', label: 'Experience' },
+  { href: '/resume', label: 'Resume' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen bg-white text-slate-800 flex flex-col">
+
+    <header class="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-slate-100">
+      <nav class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="/" class="font-bold text-slate-900 tracking-tight hover:text-blue-600 transition-colors">
+          Vincent Nguyen
+        </a>
+        <ul class="flex items-center gap-6">
+          {navLinks.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class={`text-sm font-medium transition-colors ${
+                  currentPath === href
+                    ? 'text-blue-600'
+                    : 'text-slate-500 hover:text-slate-900'
+                }`}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+
+    <main class="flex-1 max-w-4xl w-full mx-auto px-6 py-16">
+      <slot />
+    </main>
+
+    <footer class="border-t border-slate-100 py-8 text-center text-sm text-slate-400">
+      © {new Date().getFullYear()} Vincent Nguyen
+    </footer>
+
+  </body>
+</html>
